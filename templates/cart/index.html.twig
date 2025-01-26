@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/cart.css') }}">{% endblock %}
+
+{% block body %}
+<h1>Mon panier</h1>
+
+<!-- Si le panier est vide -->
+{% if cartItems is empty %}
+    <p>Votre panier est vide. <a href="{{ path('app_products') }}">Continuez vos achats</a>.</p>
+{% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Taille</th>
+                <th>Quantité</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cartItems %}
+                <tr>
+                    <td><img src="/images/{{ item.sweatshirt.id }}.jpeg" alt="{{ item.sweatshirt.name }}" width="150"></td>
+                    <td>{{ item.sweatshirt.name }}</td>
+                    <td>{{ item.sweatshirt.price }} €</td>
+                    <td>{{ item.size }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <a href="{{ path('app_cart_remove', { id: item.id }) }}" class="remove-btn">Retirer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Total -->
+    <h3>Total : {{ totalPrice }} €</h3>
+
+    <!-- Actions -->
+    <div style="display: flex; gap: 10px;">
+        <a href="{{ path('app_payment_create_intent') }}" class="btn btn-primary" data-turbo="false">Finaliser ma commande</a>
+        <a href="{{ path('app_products') }}" class="btn btn-secondary">Continuer mes achats</a>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,81 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/* Titre et slogan */
+.logo {
+    text-align: left;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.logo p {
+    font-size: 14px;
+    margin: 0;
+    color: gray;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #555;
+}
+
+/* Pied de page */
+.footer {
+    border: solid 1px black;
+    color: black;
+    margin-top: 40px;
+    font-size: 14px; 
+    padding: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.footer-row {
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    margin-bottom: 10px; 
+}
+
+.footer-row .label {
+    font-weight: bold; 
+    min-width: 150px; 
+    text-align: left;
+}
+
+.footer-row .value {
+    flex: 1;
+    text-align: left;
+}

@@ -1,0 +1,117 @@
+.admin-add-form {
+    background-color: #f8d7da;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    margin-bottom: 50px;
+}
+
+.admin-add-form .form-row {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px; 
+}
+
+.admin-add-form input {
+    padding: 5px;
+    width: 150px;
+    box-sizing: border-box; 
+}
+
+.admin-add-form button {
+    width: 200px;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #00a800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-add-form button:hover {
+    background-color: #04ff04;
+}
+
+
+.sweatshirt-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    background-color: #dfdfdf;
+    border-radius: 5px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.sweatshirt-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.sweatshirt-image img {
+    width: 120px; 
+    height: auto;
+    border-radius: 5px;
+}
+
+.sweatshirt-details {
+    flex: 1; 
+}
+
+.sweatshirt-details label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.sweatshirt-details input {
+    margin-left: 10px;
+    padding: 5px;
+    width: 8%; 
+    box-sizing: border-box;
+}
+
+.stock-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.stock-inputs input {
+    width: 60px;
+    text-align: center;
+}
+
+.sweatshirt-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.sweatshirt-actions button,
+.sweatshirt-actions a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff; 
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.sweatshirt-actions a.btn-delete {
+    background-color: #dc3545;
+}
+
+.sweatshirt-actions button:hover,
+.sweatshirt-actions a:hover {
+    opacity: 0.9;
+}

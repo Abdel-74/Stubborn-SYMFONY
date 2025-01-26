@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/products.css') }}">{% endblock %}
+
+{% block body %}
+<h1>Liste des produits</h1>
+
+<!-- Filtre par prix -->
+<form method="get" action="{{ path('app_products') }}">
+    <label for="price_range">Filtrer par fourchette de prix :</label>
+    <select name="price_range" id="price_range" onchange="this.form.submit()">
+        <option value="all" {% if price_range == 'all' %}selected{% endif %}>Tous les prix</option>
+        <option value="10-29" {% if price_range == '10-29' %}selected{% endif %}>10€ - 29€</option>
+        <option value="29-35" {% if price_range == '29-35' %}selected{% endif %}>29€ - 35€</option>
+        <option value="35-50" {% if price_range == '35-50' %}selected{% endif %}>35€ - 50€</option>
+    </select>
+</form>
+
+<!-- Liste des produits -->
+<div class="products-container">
+    {% for product in products %}
+        <div class="product-card">
+            <img src="/images/{{ product.id }}.jpeg" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>Prix : {{ product.price }} €</p>
+            <a href="{{ path('app_product_detail', {id: product.id}) }}">Voir</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

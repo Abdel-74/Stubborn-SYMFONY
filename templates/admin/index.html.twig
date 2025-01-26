@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Back-Office{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/backoffice.css') }}">{% endblock %}
+
+{% block body %}
+<h1>Back-Office</h1>
+<div class="admin-container">
+    <!-- Formulaire pour ajouter un produit -->
+    <div class="admin-add-form">
+        <h2>Ajouter un Sweat-Shirt</h2>
+        {{ form_start(form) }}
+        <div class="form-row">
+            {{ form_row(form.name, { 'label': 'Nom du produit :' }) }}
+            {{ form_row(form.price, { 'label': 'Prix :' }) }}
+        </div>
+        <div class="form-row">
+            {{ form_row(form.stockXS, { 'label': 'Stock XS :' }) }}
+            {{ form_row(form.stockS, { 'label': 'Stock S :' }) }}
+            {{ form_row(form.stockM, { 'label': 'Stock M :' }) }}
+            {{ form_row(form.stockL, { 'label': 'Stock L :' }) }}
+            {{ form_row(form.stockXL, { 'label': 'Stock XL :' }) }}
+        </div>
+        <button type="submit">Ajouter</button>
+        {{ form_end(form) }}
+    </div>
+
+    <!-- Liste des sweat-shirts -->
+    <div class="sweatshirt-list">
+        {% for sweatshirt in sweatshirts %}
+            <form method="post" action="{{ path('app_admin_edit', { id: sweatshirt.id }) }}" class="sweatshirt-item">
+                <div class="sweatshirt-content">
+                    <div class="sweatshirt-image">
+                        <img src="/images/{{ sweatshirt.id }}.jpeg" alt="{{ sweatshirt.name }}">
+                    </div>
+                    <div class="sweatshirt-details">
+                        <label>
+                            Nom : 
+                            <input type="text" name="name" value="{{ sweatshirt.name }}">
+                        </label>
+                        <label>
+                            Prix : 
+                            <input type="number" name="price" value="{{ sweatshirt.price }}" step="0.01">
+                        </label>
+                        <label>
+                            Stocks :
+                            <div class="stock-inputs">
+                                XS: <input type="number" name="stockXS" value="{{ sweatshirt.getStockForSize('XS') }}">
+                                S: <input type="number" name="stockS" value="{{ sweatshirt.getStockForSize('S') }}">
+                                M: <input type="number" name="stockM" value="{{ sweatshirt.getStockForSize('M') }}">
+                                L: <input type="number" name="stockL" value="{{ sweatshirt.getStockForSize('L') }}">
+                                XL: <input type="number" name="stockXL" value="{{ sweatshirt.getStockForSize('XL') }}">
+                            </div>
+                        </label>
+                        <div class="sweatshirt-actions">
+                            <button type="submit">Modifier</button>
+                            <a href="{{ path('app_admin_delete', { id: sweatshirt.id }) }}" class="btn-delete">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endfor %}
+    </div>
+
+
+</div>
+{% endblock %}

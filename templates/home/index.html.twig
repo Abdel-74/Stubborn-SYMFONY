@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home.css') }}">{% endblock %}
+
+{% block body %}
+<div class="container">
+        <main>
+        <h2>Sweat-shirts</h2>
+        <div class="products">
+            {% for product in products %}
+                <div class="product">
+                    <img src="/images/{{ product.id }}.jpeg" alt="{{ product.name }}">
+                    <h3>{{ product.name }}</h3>
+                    <p>Prix : {{ product.price }} €</p>
+                    {% if app.user %}
+                        <a href="{{ path('app_product_detail', {id: product.id}) }}" class="btn">Voir</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+</div>
+{% endblock %}
